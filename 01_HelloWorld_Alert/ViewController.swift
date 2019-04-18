@@ -17,6 +17,7 @@ class ViewController: UIViewController {
 
     @IBAction func buttonPressed(_ sender: Any) {
         let alertController = UIAlertController(title: "카메라", message: "사진을 촬영합니다", preferredStyle: .alert)
+        //alert -> actionSheet로 하면 밑에서 위로뜬다
         
 //        let camAction = UIAlertAction(title: "카메라 열기", style: .default) {
 //            (action: UIAlertAction) -> Void in
@@ -43,9 +44,20 @@ class ViewController: UIViewController {
             self.outLabel.text = "취소 실행됨"
         }
         
+        let deleteAction = UIAlertAction(title: "삭제", style: .destructive, handler: {(action:UIAlertAction) -> Void in
+            self.outLabel.text = "삭제가 선택됨"
+            
+            
+        })
+        
+        let picViewAction = UIAlertAction(title: "사진보기", style: .default, handler: nil)
+        
         alertController.addAction(camAction)
         alertController.addAction(libAction)
         alertController.addAction(cancelAction)
+        alertController.addAction(picViewAction)
+        alertController.addAction(deleteAction)
+        
         
         present(alertController, animated: true, completion: nil)
     }
